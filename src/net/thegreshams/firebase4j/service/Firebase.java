@@ -40,9 +40,9 @@ public class Firebase {
 ///////////////////////////////////////////////////////////////////////////////
     protected final String baseUrl;
     protected final CloseableHttpClient client;
+    protected final ExecutorService executor;
     private String secureToken = null;
     private Boolean useJsonExt = true;
-    private final ExecutorService executor;
 
     public Firebase(String baseUrl, int threadPoolSize) throws FirebaseException {
         if (threadPoolSize <= 0) {
