@@ -44,7 +44,7 @@ public class Demo {
 
 
 		// create the firebase
-		Firebase firebase = new Firebase( firebase_baseUrl );
+		Firebase firebase = new Firebase( firebase_baseUrl, 0);
 
 
 		// "DELETE" (the fb4jDemo-root)
@@ -102,15 +102,13 @@ public class Demo {
 		// Sign Up user for Firebase's Auth Service demo (https://firebase.google.com/docs/reference/rest/auth/)
 		if(firebase_apiKey != null) {
 
-			firebase = new Firebase("https://www.googleapis.com/identitytoolkit/v3/relyingparty", false);
-			firebase.addQuery("key", firebase_apiKey);
-
+			firebase = new Firebase("https://www.googleapis.com/identitytoolkit/v3/relyingparty", false, 0);
 			dataMap.clear();
 			dataMap.put("email", "elonmusk@tesla.com");
 			dataMap.put("password", "TeslaRocks");
 			dataMap.put("returnSecureToken", true);
 
-			response = firebase.post("signupNewUser", dataMap);
+			response = firebase.post("signupNewUser", dataMap, Firebase.query("key", firebase_apiKey));
 			System.out.println("\n\nResult of Signing Up:\n" + response);
 			System.out.println("\n");
 
